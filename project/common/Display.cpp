@@ -1610,6 +1610,10 @@ void Stage::HandleEvent(Event &inEvent)
       //if (inEvent.type!=etTouchMove)
         //ELOG("  type=%d %d,%d obj=%p (%S)", inEvent.type, inEvent.x, inEvent.y, hit_obj, hit_obj?hit_obj->name.c_str():L"(none)");
 
+      while (hit_obj != 0 && !hit_obj->getMouseEnabled()) {
+        hit_obj = hit_obj->getParent();
+      }
+
       SimpleButton *but = hit_obj ? dynamic_cast<SimpleButton *>(hit_obj) : 0;
       inEvent.id = hit_obj ? hit_obj->id : id;
       Cursor cur = hit_obj ? hit_obj->GetCursor() : curPointer;
