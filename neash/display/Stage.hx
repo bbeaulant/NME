@@ -27,8 +27,8 @@ class Stage extends DisplayObjectContainer
 	 * the frame rate will be more constant, but the busy wait will take more CPU.
 	 * @private
 	 */
-	public static var nmeEarlyWakeup = 0.005;
-	
+    public static var nmeEarlyWakeup = #if mac 0.008 #else 0.005 #end;
+
 	public static var OrientationPortrait = 1;
 	public static var OrientationPortraitUpsideDown = 2;
 	public static var OrientationLandscapeRight = 3;
@@ -755,7 +755,7 @@ class Stage extends DisplayObjectContainer
 		nme_stage_show_cursor(nmeHandle, inShow);
 	}
 	
-	
+
 	
 	// Getters & Setters
 	
